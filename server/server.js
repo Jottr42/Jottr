@@ -1,57 +1,46 @@
 const express = require('express');
-const app = express();
 const path = require('path');
-var cookieParser = require('cookie-parser');
-const cors = require('cors');
+const app = express();
+const PORT = 3000;
+const userRouter = require('./routes/userRouter');
+const recordsRouter = require('./routes/recordsRouter');
+const clientRouter = require('./routes/clientRouter');
+const userController = require('./controllers/userController');
 
-//mostly for 3rd party api calls from backend middleware
-app.use(cookieParser()).use(express.json()).use(cors());
+require('dotenv').config();
 
-//define routers
-const userRouter = require('./routes/user');
-const pinRouter = require('./routes/pins');
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-//define controller and db models
-const controllers = require('./controllers/controller.js');
+app.use('/', express.static(path.resolve(__dirname, '../client')));
 
-// app.get('/signup', (req, res, err) => {
-//   // res.sendFile(path.resolve(__dirname, '../client/signup.html'));
-// });
-
-// app.get('/login', (req, res, err) => {
-//   // res.sendFile(path.resolve(__dirname, '../client/login.html'));
-// });
-
-app.post('/login', controllers.login, controllers.getUser, (req, res, err) => {
-  console.log('SUCCESS!');
-  res.status(200).json(res.locals.response);
-});
-
-app.post('/signup', controllers.createUser, (req, res, err) => {
-  console.log('SUCCESS!');
-  res.send();
-});
-
+//user router
 app.use('/user', userRouter);
-app.use('/pin', pinRouter);
 
-if (process.env.NODE_ENV === 'production') {
-  // statically serve everything in the build folder on the route '/build'
-  app.use('/build', express.static(path.join(__dirname, '../build')));
-  // serve index.html on the route '/'
-  app.get('/', controllers.checkAuth, (req, res) => {
-    return res.status(200).sendFile(path.resolve(__dirname, '../index.html'));
-  });
-}
+//client router
+app.use('/client', clientRouter);
 
-//delete when we start using webpack to debug fullstack
-app.get('/', (req, res, err) => {
-  res.sendFile(path.resolve(__dirname, '../index.html'));
-});
+//session routers
+app.use('/record', recordsRouter);
 
+//404 error handler
+// app.use('/', (req, res) => {
+//   return res.sendStatus(404);
+// });
+//Global error handler
 app.use((err, req, res, next) => {
-  console.log('ERROR: ', err);
+  const defaultErr = {
+    log: 'Express error handler caught unknown middleware error',
+    status: 500,
+    message: { err: 'An error occurred' },
+  };
+  const errorObj = Object.assign({}, defaultErr, err);
+  console.log(`Error: ${errorObj.log}`);
+  return res.status(errorObj.status).json(errorObj.message);
 });
 
-console.log('Listening on 3000');
-app.listen(3000);
+app.listen(PORT, () => {
+  console.log(`Server listening on port: ${PORT}...`);
+});
+
+module.exports = app;

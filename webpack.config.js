@@ -22,7 +22,6 @@ module.exports = {
   ],
 
   devServer: {
-    historyApiFallback: true,
     static: {
       directory: path.join(__dirname, '/client'),
     },
@@ -51,21 +50,12 @@ module.exports = {
         use: ['source-map-loader'],
       },
       {
-        test: /\.(scss|sass)$/,
+        test: /\.s[ac]ss$/i,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
-      {
-        test: /\.module\.css$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-            },
-          },
-        ],
-      },
     ],
+  },
+  resolve: {
+    extensions: ['.jsx', '.js'],
   },
 };

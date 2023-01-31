@@ -1,0 +1,11 @@
+@import './variables';
+
+body {
+  // background-color: mix($body-color, $mauve, 1%);
+  background-color: rgb(191, 32, 32);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
