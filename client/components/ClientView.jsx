@@ -19,7 +19,7 @@ export function ClientView(props) {
       </li>
     );
   }
-
+  //we will be recieving a current client, but if a specific client has not been picked yet, we will just render a div that says please choose a client
   return (
     <div className="client-view">
       <div className="client-view-client-info">

@@ -13,14 +13,20 @@ form {
   width: 100vw;
   grid-template-rows: 50px 1fr;
   grid-template-columns: 1fr 3fr;
+  grid-template-areas: 'navbar main-content';
 }
 
-.main-page-content {
-  grid-row: 2 / 3;
-  grid-column: 1 / 3;
-  display: flex;
-  border: 1px solid black;
-}
+// .main-page-content {
+//   grid-area: main-content;
+//   display: grid;
+//   grid-template-rows: 1fr;
+//   grid-template-columns: 1fr 1fr;
+//   border: 1px solid black;
+//   // grid-row: 2 / 3;
+//   // grid-column: 1 / 3;
+//   // display: flex;
+//   // border: 1px solid black;
+// }
 
 #notes {
   height: 400px;

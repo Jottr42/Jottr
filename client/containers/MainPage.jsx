@@ -8,6 +8,7 @@ import Modal from '../components/Modal';
 import '../styles.scss';
 //import AddTemplateBtn from './components/AddTemplateBtn.jsx';
 
+//will have user_id here - which we will need for basically all the queries
 const MainPage = () => {
   const [viewOneSession, setViewOneSession] = useState(false);
   const [showModal, setShowModal] = useState(true);
@@ -16,8 +17,10 @@ const MainPage = () => {
     <div className="mainpage">
       <NavBar />
       <div className="main-page-content">
+        {/* need to pass user_id here */}
         <SideDisplay viewState={viewOneSession} controlModal={setShowModal} />
 
+        {/* need to pass user_id here */}
         <ClientDisplay
           viewState={viewOneSession}
           changeViewHandler={setViewOneSession}
