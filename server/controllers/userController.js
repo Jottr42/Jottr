@@ -1,16 +1,20 @@
 const db = require('../models/jottrModel.js');
+const bcrypt = require('bcryptjs');
 
 const userController = {};
 
 userController.createUser = async (req, res, next) => {
-  console.log(`req.body======`, req.body);
-  const { name, email, password } = req.body;
-  res.locals.newUser = name;
-  const insertArray = [name, email, password];
-  const sqlQuery = `
-  INSERT INTO users (name, email, password) VALUES ($1, $2, $3);
-  `;
   try {
+    console.log(`IN CREATE USER`);
+    const { name, email, password } = req.body;
+
+    const salt = await bcrypt.genSalt(10);
+    const hashPW = await bcrypt.hash(password, salt);
+    const insertArray = [name, email, hashPW];
+    const sqlQuery = `
+    INSERT INTO users (name, email, password) VALUES ($1, $2, $3);
+    `;
+
     const result = await db.query(sqlQuery, insertArray);
     console.log(`result =======================`, result);
     res.locals.userCreated = 'User was successfully created';
@@ -19,6 +23,38 @@ userController.createUser = async (req, res, next) => {
     next({
       log: `Error in userController.createUser. Details: ${err}`,
       message: { err: 'An error occurred in userController.createUser' },
+    });
+  }
+};
+
+userController.verifyUser = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    //get all info from users
+    const sqlQuery = `SELECT password from users WHERE email = $1`;
+    const insertArray = [email];
+    const result = await db.query(sqlQuery, insertArray);
+    console.log(`result =======================`, result);
+    const hashPW = result.rows[0].password;
+    console.log(`userPass =====`, hashPW);
+
+    bcrypt.compare(password, hashPW, (err, passMatch) => {
+      //check password w/ bcrypt
+      if (passMatch) {
+        res.locals.userVerification = 'User verified!';
+        return next(); // returns true if password matches hashPW
+      } else {
+        return next({
+          log: 'userController.verifyUser',
+          status: 400,
+          message: { err: 'Wrong username or password' },
+        });
+      }
+    });
+  } catch (err) {
+    next({
+      log: `Error in userController.verifyUser. Details: ${err}`,
+      message: { err: 'An error occurred in userController.verifyUser' },
     });
   }
 };

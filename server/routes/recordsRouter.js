@@ -8,23 +8,23 @@ router.post('/', recordsController.createRecord, (req, res, next) => {
   return res.status(200).json(res.locals.recordCreated);
 });
 
-//get client info
-// router.get('/:client_id', clientController.getClient, (req, res, next) => {
-//   return res.status(200).json(res.locals.clientInfo);
-// });
+//get record info
+router.get('/:record_id', recordsController.getRecord, (req, res, next) => {
+  return res.status(200).json(res.locals.recordInfo);
+});
 
 //update client
 // router.put('/client_id', clientController.updateClient, (req, res, next) => {
 //   return res.status(200).json(res.locals.updatedClient);
 // });
 
-//delete client
-// router.delete(
-//   '/:client_id',
-//   clientController.deleteClient,
-//   (req, res, next) => {
-//     return res.status(200).json(res.locals.deletedClient);
-//   }
-// );
+// delete client
+router.delete(
+  '/:record_id',
+  recordsController.deleteRecord,
+  (req, res, next) => {
+    return res.status(200).json(res.locals.deletedRecord);
+  }
+);
 
 module.exports = router;
