@@ -8,7 +8,7 @@
   align-self: center;
   padding-top: 10px;
   align-items: center;
-  height: 100%;
+  height: 100vh;
   background-color: rgb(41, 53, 50);
   transition: width 0.5s ease;
   overflow: hidden;
@@ -39,14 +39,27 @@
 }
 
 .client-list__client-list {
+  border-radius: 5px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: auto; /* makes it only scrollable vertically */
+  overflow-y: auto;
+  min-height: auto;
   max-height: calc(
     100% - 50pc
   ); /* subtract the height of the add client button */
+}
+
+.client-list__client {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  width: 95%;
+  margin-bottom: 10px;
+  background-color: white;
+  height: 50px;
 }
 
 .client-list__add-client {

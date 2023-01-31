@@ -48,7 +48,7 @@ const ClientList = (props) => {
               client.name.toLowerCase().includes(searchTerm.toLowerCase())
             )
             .map((client) => (
-              <div key={client.id} className="client-list__client-item">
+              <div key={client.id} className="client-list__client">
                 {client.name}
               </div>
             ))}
