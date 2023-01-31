@@ -6,13 +6,12 @@ const SignUpForm = (props) => {
   const navigate = useNavigate();
   const onSignUpSubmitHandler = (e) => {
     e.preventDefault();
-    const firstName = e.target[0].value;
-    const lastName = e.target[1].value;
-    const username = e.target[2].value;
-    const password = e.target[3].value;
-    const email = e.target[4].value;
+    const fullName = e.target[0].value;
+    const username = e.target[1].value;
+    const password = e.target[2].value;
+    const email = e.target[3].value;
 
-    console.log(firstName, lastName);
+    console.log(fullName);
     console.log(username, password);
     console.log(email);
   };
@@ -20,13 +19,9 @@ const SignUpForm = (props) => {
   return (
     <div>
       <form onSubmit={onSignUpSubmitHandler}>
-        <label htmlFor="firstName">
-          First Name:
-          <input name="firstName" type="text" placeholder="Enter First Name" />
-        </label>
-        <label htmlFor="firstName">
-          Last Name:
-          <input name="lastName" type="text" placeholder="Enter Last Name" />
+        <label htmlFor="fullName">
+          Full Name:
+          <input name="fullName" type="text" placeholder="Enter Full Name" />
         </label>
         <label htmlFor="email">
           Email Address:

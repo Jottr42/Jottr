@@ -8,13 +8,6 @@ const LandingPage = () => {
     <div>
       <h1>Hello from Landing Page</h1>
       <LoginForm />
-      <LoginForm />
-      <div>
-        <p>----------</p>
-        <p>----------</p>
-        <p>----------</p>
-        <p>----------</p>
-      </div>
 
       <SignUpForm />
     </div>

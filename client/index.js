@@ -1,15 +1,14 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
-import { BrowserRouter } from 'react-router-dom';
 import './stylesheets/styles.scss';
+import { BrowserRouter } from 'react-router-dom';
 
-// uncomment so that webpack can bundle styles
-// import styles from './scss/application.scss';
-
-render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  document.getElementById('root')
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
 );
