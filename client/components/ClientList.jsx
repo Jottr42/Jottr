@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import '../stylesheets/ClientList.scss';
 
-const ClientList = () => {
+const ClientList = (props) => {
   const [searchTerm, setSearchTerm] = useState('');
   //this should be replaced with a fetch request via axios
   const [clients, setClients] = useState([
@@ -12,6 +13,9 @@ const ClientList = () => {
     { id: 6, name: 'Client 6' },
   ]);
 
+  const handleAddClientBtnClick = () => {
+    props.controlModal(true);
+  };
   // const [clients, setClients] = useState([]);
 
   // useEffect(() => {
@@ -50,7 +54,7 @@ const ClientList = () => {
             ))}
         </div>
         <div className="client-list__add-client">
-          <button>Add Client</button>
+          <button onClick={handleAddClientBtnClick}>Add Client</button>
         </div>
       </div>
     </div>

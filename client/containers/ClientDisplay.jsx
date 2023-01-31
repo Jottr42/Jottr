@@ -1,12 +1,22 @@
 import React from 'react';
 import { ClientView } from '../components/ClientView';
-import '../stylesheets/styles.scss';
+import { CreateSession } from '../components/CreateSession';
+//import '../stylesheets/ClientDisplay.scss';
 
 const ClientDisplay = (props) => {
-  const showClientView = true;
-  const showSessionView = false;
-
-  return <div>{showClientView && <ClientView />}</div>;
+  return (
+    <div>
+      {!props.viewState && (
+        <ClientView
+          changeViewHandler={props.changeViewHandler}
+          viewState={props.viewState}
+        />
+      )}
+      {props.viewState && (
+        <CreateSession changeViewHandler={props.changeViewHandler} />
+      )}
+    </div>
+  );
 };
 
 export default ClientDisplay;
