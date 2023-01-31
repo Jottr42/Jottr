@@ -5,10 +5,9 @@
   display: flex;
   border: 1px solid black;
   width: 100%;
-  align-self: center;
-  padding-top: 10px;
+  align-self: flex-start;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
   background-color: rgb(41, 53, 50);
   transition: width 0.5s ease;
   overflow: hidden;
@@ -22,7 +21,6 @@
   display: flex;
   flex-direction: column;
   align-content: center;
-  height: 100%;
   width: 100%;
 }
 
@@ -66,6 +64,16 @@
   align-content: center;
   align-self: center;
   border-radius: 5px;
+  width: 95%;
+  padding: 10px;
+}
+
+.add-client {
+  align-content: center;
+  align-self: center;
+  border-radius: 5px;
+  width: 95%;
+  padding: 10px;
 }
 
 // .client-list {

@@ -5,6 +5,8 @@ const Modal = (props) => {
     props.controlModal(false);
   };
 
+  //need to make the client POST request
+
   return (
     <div className="modal">
       <div className="modal-content">
