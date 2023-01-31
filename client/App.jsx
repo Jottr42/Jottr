@@ -7,11 +7,19 @@ import LandingPage from './containers/LandingPage.jsx';
 import './styles.scss';
 
 const App = () => {
+  const [user, setUser] = useState({});
+
   return (
     <div>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/main" element={<MainPage />} />
+        <Route
+          path="/"
+          element={<LandingPage user={user} setUser={setUser} />}
+        />
+        <Route
+          path="/main"
+          element={<MainPage user={user} setUser={setUser} />}
+        />
       </Routes>
     </div>
   );

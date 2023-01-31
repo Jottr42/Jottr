@@ -15,7 +15,7 @@ router.post(
 );
 
 // verify new user
-router.get(
+router.post(
   '/verify',
   userController.verifyUser,
   cookieController.set,
