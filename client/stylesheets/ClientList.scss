@@ -1,6 +1,71 @@
 .client-list-container {
-  height: 100%;
+  display: flex;
+  grid-row: 2/3;
+  grid-column: 1/2;
+  display: flex;
   border: 1px solid black;
+  width: 100%;
+  align-self: center;
+  padding-top: 10px;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(41, 53, 50);
+  transition: width 0.5s ease;
+  overflow: hidden;
+  padding: 10px;
+
+  //border: 1px solid black;
+  //padding: 10px;
+}
+
+.client-list {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.client-list__search-input {
+  margin-bottom: 10px;
+  align-content: center;
+  align-self: center;
+  width: 95%;
+  padding: 10px;
+  border: 1px solid rgb(41, 53, 50);
+  border-radius: 5px;
+  font-size: 14px;
+  color: rgb(41, 53, 50);
+}
+
+.client-list__client-list {
+  border-radius: 5px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  min-height: auto;
+  max-height: calc(
+    100% - 50pc
+  ); /* subtract the height of the add client button */
+}
+
+.client-list__client {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  width: 95%;
+  margin-bottom: 10px;
+  background-color: white;
+  height: 50px;
+}
+
+.client-list__add-client {
+  align-content: center;
+  align-self: center;
+  border-radius: 5px;
 }
 
 // .client-list {
