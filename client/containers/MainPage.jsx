@@ -12,12 +12,12 @@ import '../styles.scss';
 const MainPage = () => {
   const [viewOneSession, setViewOneSession] = useState(false);
   const [showModal, setShowModal] = useState(true);
-
+  //make a request for all of a user's clients - should be an array of client objects that we save to state here.
   return (
     <div className="mainpage">
       <NavBar />
       <div className="main-page-content">
-        {/* need to pass user_id here */}
+        {/* need to pass the list of clients here*/}
         <SideDisplay viewState={viewOneSession} controlModal={setShowModal} />
 
         {/* need to pass user_id here */}

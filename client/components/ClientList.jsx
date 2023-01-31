@@ -54,7 +54,9 @@ const ClientList = (props) => {
             ))}
         </div>
         <div className="client-list__add-client">
-          <button onClick={handleAddClientBtnClick}>Add Client</button>
+          <button className="add-client" onClick={handleAddClientBtnClick}>
+            Add Client
+          </button>
         </div>
       </div>
     </div>

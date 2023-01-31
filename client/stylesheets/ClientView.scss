@@ -1,4 +1,43 @@
 .client-view {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column: 2/3;
+  grid-row: 2/2;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.client-view-client-info {
+  grid-column: 1/2;
+  border: 1px solid black;
+  width: 50%;
+}
+
+.client-view-client-sessions {
+  grid-column: 2/3;
+  border: 1px solid black;
+  width: 50%;
+}
+
+.client-info-list-item {
+  margin-bottom: 10px;
+}
+
+.sessions-list {
+  list-style: none;
+  padding: 0;
+}
+
+.session-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 // .client-info-list {
