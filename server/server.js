@@ -6,8 +6,10 @@ const userRouter = require('./routes/userRouter');
 const recordsRouter = require('./routes/recordsRouter');
 const clientRouter = require('./routes/clientRouter');
 const userController = require('./controllers/userController');
-
+const cors = require('cors');
 require('dotenv').config();
+
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
