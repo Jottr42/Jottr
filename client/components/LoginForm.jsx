@@ -39,7 +39,7 @@ const LoginForm = ({ setUser, user }) => {
           <label htmlFor="password">Password:</label>
           <input name="password" type="text" placeholder="Password"></input>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" className="login-btn">Login</button>
       </form>
     </div>
   );

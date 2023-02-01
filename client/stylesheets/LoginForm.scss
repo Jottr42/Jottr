@@ -3,55 +3,60 @@ $secondary-color: rgb(50, 61, 57);
 $tertiary-color: rgb(95, 83, 89);
 $neutral-color: rgb(194, 191, 212);
 $body-color: rgb(245, 240, 238);
-$mauve: rgb(224, 176, 255);
-
 
 .formCard {
-    background-color: $body-color;
-    width: 500px;
-    height: 350px;
-    margin: 0 auto;
+  background-color: $body-color;
+  width: 500px;
+  height: 250px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.7);
+  background: linear-gradient(
+    to bottom,
+    rgb(235, 232, 222) 0%,
+    rgb(235, 232, 222) 47%,
+    rgb(255, 255, 255) 100%
+  );
+
+  form {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
 
-  
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-  
-      .form-group {
-        margin: 10px;
-        width: 80%;
-  
-        label {
-          color: $secondary-color;
-        }
-  
-        input {
-          width: 100%;
-          padding: 10px;
-          border: 1px solid $tertiary-color;
-          background-color: $neutral-color;
-          color: $tertiary-color;
-          font-size: 16px;
-          margin-top: 5px;
-          border-radius: 5px;
-        }
+    .form-group {
+      margin: 10px;
+      width: 80%;
+
+      label {
+        color: $secondary-color;
       }
-  
-      button {
-        margin-top: 10px;
-        padding: 10px 20px;
-        background-color: $primary-color;
-        color: white;
-        border: none;
-        cursor: pointer;
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid $tertiary-color;
+        background-color: white;
+        color: $tertiary-color;
         font-size: 16px;
+        margin-top: 5px;
         border-radius: 5px;
-        border: 1px solid black;
       }
     }
+
+    .login-btn {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: $primary-color;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid black;
+    }
   }
-  
+}
