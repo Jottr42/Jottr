@@ -1,8 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-export function CreateSession({ currentClient, changeViewHandler }) {
+export function CreateSession({
+  currentClient,
+  changeViewHandler,
+  setCurrentSession,
+  currentSession,
+  setCurrentClientSessions,
+  currentClientSessions,
+  setSessionCreated,
+}) {
   const [notes, setNotes] = useState('these are all my old notes:');
+  let textAreaVal = currentSession.session_notes
+    ? currentSession.session_notes
+    : '';
+  let sessionDateVal = currentSession.date
+    ? currentSession.date.slice(0, 10)
+    : '';
+  let sessionGoalVal = currentSession.goal ? currentSession.goal : '';
+  let upcomingVal = currentSession.upcoming ? currentSession.upcoming : '';
 
+  //if we are viewing an existing session, we setNotes to that sessions nots
+  console.log(currentSession, 'currentSession in createSession');
   const handleNotesChange = (event) => {
     // 👇️ access textarea value
     setNotes(event.target.value);
@@ -11,6 +30,10 @@ export function CreateSession({ currentClient, changeViewHandler }) {
   const handleBackBtnClick = () => {
     changeViewHandler(false);
   };
+
+  useEffect(() => {
+    console.log(currentSession, 'rerendering the sessions list');
+  }, [currentSession, currentClientSessions]);
 
   //   {
   //     "date": "2022-01-28",
@@ -38,11 +61,41 @@ export function CreateSession({ currentClient, changeViewHandler }) {
         upcoming,
         client_id,
       });
+      setSessionCreated(true);
+      changeViewHandler(false);
 
       console.log(`INFO=======`, info.data);
     } catch (error) {
       console.log(`Error in CreateSession`, error);
     }
+  };
+
+  //handling record/session deletions
+  const handleDeleteSessionClick = () => {
+    const toBeDeletedRecordID = currentSession.record_id;
+    const confirmSessionDeletion = confirm(
+      'Are you sure you want to delete this client session?'
+    );
+    if (!confirmSessionDeletion) return;
+    axios({
+      method: 'DELETE',
+      url: `http://localhost:3000/record/${toBeDeletedRecordID}`,
+    })
+      .then((response) => {
+        setCurrentSession({});
+        setCurrentClientSessions((prev) => {
+          const newClientSessionsList = [];
+          for (let session of prev) {
+            if (session.session_id != toBeDeletedRecordID) {
+              newClientSessionsList.push(session);
+            }
+          }
+          return newClientSessionsList;
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -51,22 +104,32 @@ export function CreateSession({ currentClient, changeViewHandler }) {
         <textarea
           id="notes"
           name="notes"
-          value={notes}
+          defaultValue={textAreaVal}
           onChange={handleNotesChange}
         />
 
         <hr />
 
         <label htmlFor="sessionDate">
-          <input type="date" id="sessionDate" name="sessionDate" />
+          <input
+            type="date"
+            id="sessionDate"
+            name="sessionDate"
+            defaultValue={sessionDateVal}
+          />
         </label>
         <label htmlFor="sessionGoals">
           Session Goal:
-          <input type="text" id="sessionGoals" />
+          <input type="text" id="sessionGoals" defaultValue={sessionGoalVal} />
         </label>
         <label htmlFor="nextSessionGoals">
           Next Session Goal:
-          <input type="text" id="nextSessionGoals" name="nextSessionGoals" />
+          <input
+            type="text"
+            id="nextSessionGoals"
+            name="nextSessionGoals"
+            defaultValue={upcomingVal}
+          />
         </label>
 
         <button type="submit" disabled={!notes}>
@@ -74,7 +137,9 @@ export function CreateSession({ currentClient, changeViewHandler }) {
         </button>
       </form>
 
-      <button disabled={!notes}>Delete Session</button>
+      <button disabled={!notes} onClick={handleDeleteSessionClick}>
+        Delete Session
+      </button>
       <button onClick={handleBackBtnClick}> Back</button>
     </div>
   );

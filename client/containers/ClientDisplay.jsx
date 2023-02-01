@@ -8,6 +8,10 @@ const ClientDisplay = ({
   changeViewHandler,
   currentClient,
   currentClientSessions,
+  setCurrentSession,
+  currentSession,
+  setCurrentClientSessions,
+  setSessionCreated,
 }) => {
   return (
     <div>
@@ -19,6 +23,7 @@ const ClientDisplay = ({
           client={''}
           currentClient={currentClient}
           currentClientSessions={currentClientSessions}
+          setCurrentSession={setCurrentSession}
         />
       )}
       {/* this needs to know the current session */}
@@ -27,6 +32,10 @@ const ClientDisplay = ({
           changeViewHandler={changeViewHandler}
           currentClient={currentClient}
           currentClientSessions={currentClientSessions}
+          setCurrentSession={setCurrentSession}
+          currentSession={currentSession}
+          setCurrentClientSessions={setCurrentClientSessions}
+          setSessionCreated={setSessionCreated}
         />
       )}
     </div>
