@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../stylesheets/SignUpForm.scss';
 
 const SignUpForm = ({ showModal, setLogin, setSignup }) => {
   const navigate = useNavigate();
@@ -36,33 +37,34 @@ const SignUpForm = ({ showModal, setLogin, setSignup }) => {
   };
 
   return (
-    <div>
+    <div className="form-card">
       <form onSubmit={onSignUpSubmitHandler}>
-        <label htmlFor="fullName">
+        <label htmlFor="fullName" className="form-label">
           Full Name:
-          <input name="fullName" type="text" placeholder="Enter Full Name" />
+          <input name="fullName" type="text" placeholder="Enter Full Name" className="form-input"/>
         </label>
-        <label htmlFor="email">
+        <label htmlFor="email" className="form-label">
           Email Address:
-          <input name="email" type="text" placeholder="valid@email.com" />
+          <input name="email" type="text" placeholder="valid@email.com" className="form-input"/>
         </label>
         {/* <label htmlFor="username">
           Username:
           <input name="username" type="text" placeholder="Choose Username" />
         </label> */}
-        <label htmlFor="password">
+        <label htmlFor="password" className="form-label">
           Password:
-          <input name="password" type="text" placeholder="Choose Password" />
+          <input name="password" type="text" placeholder="Choose Password" className="form-input"/>
         </label>
-        <label htmlFor="confirmPass">
+        <label htmlFor="confirmPass" className="form-label">
           Confirm Password:
           <input
             name="confirmPass"
             type="text"
             placeholder="Confirm Password"
+            className="form-input"
           />
         </label>
-        <button type="submit">REGISTER</button>
+        <button type="submit" className="form-submit-btn">Register</button>
       </form>
     </div>
   );

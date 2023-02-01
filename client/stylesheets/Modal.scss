@@ -8,19 +8,42 @@
   align-items: center;
   justify-content: center;
   z-index: 1;
-
 }
 
-.modal-content {
+.modal-body {
   background-color: rgb(194, 191, 212);
   width: 80%;
-  height: 80%;
+  height: 60%;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.7);
+  background: linear-gradient(
+    to bottom,
+    rgb(235, 232, 222) 0%,
+    rgb(235, 232, 222) 47%,
+    rgb(255, 255, 255) 100%
+  );
+}
+
+.modal-content {
+  background-color: rgb(194, 191, 212);
+  width: 80%;
+  height: 60%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.7);
+  background: linear-gradient(
+    to bottom,
+    rgb(235, 232, 222) 0%,
+    rgb(235, 232, 222) 47%,
+    rgb(255, 255, 255) 100%
+  );
 }
 
 .modal-title {
@@ -49,7 +72,7 @@
 .modal-footer {
   display: flex;
   justify-content: flex-end;
-  margin-top: 20px;
+  margin-top: 10px;
   button {
     background: rgb(135, 153, 105);
     color: black;
@@ -61,5 +84,21 @@
     &:hover {
       cursor: pointer;
     }
+  }
+}
+
+.submitBtn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  background: rgb(135, 153, 105);
+  color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  box-shadow: inset 0 0 20px 5px rgba(0, 0, 0, 0.7);
+  &:hover {
+    cursor: pointer;
   }
 }
