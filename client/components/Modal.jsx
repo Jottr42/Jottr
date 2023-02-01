@@ -1,12 +1,36 @@
 import React from 'react';
+import axios from 'axios';
 import '../stylesheets/Modal.scss';
 
-const Modal = (props) => {
+const Modal = ({ user, controlModal, setClients }) => {
   const handleCloseModalClick = () => {
-    props.controlModal(false);
+    controlModal(false);
   };
 
   //need to make the client POST request
+
+  const createClient = async (e) => {
+    e.preventDefault();
+    const name = e.target[0].value;
+    const email = e.target[1].value;
+    try {
+      const info = await axios.post(`http://localhost:3000/client`, {
+        name,
+        email,
+        user_id: user.userID,
+      });
+
+      const result = await axios.get(
+        `http://localhost:3000/client/allClients/${user.userID}`
+      );
+
+      console.log(`allclients=======`, result.data);
+      setClients(result.data);
+      controlModal(false);
+    } catch (error) {
+      console.log(`Error in Signup Form`, error);
+    }
+  };
 
   return (
     <div className="modal">
@@ -15,7 +39,7 @@ const Modal = (props) => {
           <h4 className="modal-title">Add Client</h4>
         </div>
         <div className="modal-body">
-          <form className="modal-form">
+          <form className="modal-form" onSubmit={createClient}>
             <label htmlFor="name">
               Name:
               <input type="text" name="name" />
@@ -24,10 +48,7 @@ const Modal = (props) => {
               Email:
               <input type="text" name="email" />
             </label>
-            <label htmlFor="name">
-              Phone:
-              <input type="text" name="phone" />
-            </label>
+            <button type="submit">ADD CLIENT</button>
           </form>
         </div>
         <div className="modal-footer">

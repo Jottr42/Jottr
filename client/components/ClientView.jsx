@@ -1,17 +1,26 @@
 import React from 'react';
 import '../stylesheets/ClientView.scss';
 
-export function ClientView(props) {
+export const ClientView = ({
+  changeViewHandler,
+  currentClient,
+  currentClientSessions,
+}) => {
   const viewBtnClickHandler = () => {
-    props.changeViewHandler(true);
+    changeViewHandler(true);
   };
-
+  console.log('currentClientSessions', currentClientSessions);
   const allSessions = [];
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < currentClientSessions.length; i++) {
     allSessions.push(
-      <li className="session-list-item" key={i}>
+      <li
+        className="session-list-item"
+        key={i}
+        id={currentClientSessions[i].record_id}
+      >
         <p>
-          Session {i} - {i}/01/2022
+          {currentClientSessions[i].date.slice(0, 10)} -
+          {currentClientSessions[i].goal}
         </p>
         <button className="session-list-item-btn" onClick={viewBtnClickHandler}>
           View
@@ -27,12 +36,12 @@ export function ClientView(props) {
           <h1>Client Info</h1>
         </div>
         <ul className="client-info-list">
-          <li className="client-info-list-item">Client Name: Bob Turner</li>
           <li className="client-info-list-item">
-            Client Email: bobturner99@gmail.com
+            Client Name: {currentClient.name}
           </li>
-          <li className="client-info-list-item">Client Phone: 000-000-0000</li>
-          <li className="client-info-list-item">Date of Birth: 01/01/1990</li>
+          <li className="client-info-list-item">
+            Client Email: {currentClient.email}
+          </li>
         </ul>
       </div>
       <div className="client-session-section">
@@ -40,8 +49,12 @@ export function ClientView(props) {
           <h1>Session History</h1>
         </div>
         <ul className="sessions-list">{allSessions}</ul>
-        <button className="session-button" onClick={viewBtnClickHandler}>Add Session</button>
+        {currentClient.client_id && (
+          <button className="session-button" onClick={viewBtnClickHandler}>
+            Add Session
+          </button>
+        )}
       </div>
     </div>
   );
-}
+};

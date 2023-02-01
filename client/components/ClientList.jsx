@@ -1,35 +1,24 @@
 import React, { useState } from 'react';
 import '../stylesheets/ClientList.scss';
 
-const ClientList = (props) => {
+const ClientList = ({ clients, controlModal, setCurrentClient }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  //this should be replaced with a fetch request via axios
-  const [clients, setClients] = useState([
-    { id: 1, name: 'Client 1' },
-    { id: 2, name: 'Client 2' },
-    { id: 3, name: 'Client 3' },
-    { id: 4, name: 'Client 4' },
-    { id: 5, name: 'Client 5' },
-    { id: 6, name: 'Client 6' },
-  ]);
 
   const handleAddClientBtnClick = () => {
-    props.controlModal(true);
+    controlModal(true);
   };
-  // const [clients, setClients] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const result = await axios(
-  //       'https://api.example.com/clients'
-  //     );
-  //     setClients(result.data);
-  //   };
-  //   fetchData();
-  // }, []);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
+  };
+
+  const handleClientClick = (event) => {
+    console.log(event.target.id);
+    console.log(clients);
+    const chosenClient = clients.filter((client) => {
+      return client.client_id === Number(event.target.id);
+    })[0];
+    setCurrentClient(chosenClient);
   };
 
   return (
@@ -48,7 +37,12 @@ const ClientList = (props) => {
               client.name.toLowerCase().includes(searchTerm.toLowerCase())
             )
             .map((client) => (
-              <div key={client.id} className="client-list__client">
+              <div
+                key={client.client_id}
+                className="client-list__client"
+                id={client.client_id}
+                onClick={handleClientClick}
+              >
                 {client.name}
               </div>
             ))}
