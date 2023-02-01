@@ -19,11 +19,13 @@ export function ClientView(props) {
       </li>
     );
   }
-  //we will be recieving a current client, but if a specific client has not been picked yet, we will just render a div that says please choose a client
+
   return (
     <div className="client-view">
-      <div className="client-view-client-info">
-        <h1>Client Info:</h1>
+      <div className="client-info-section">
+        <div className="client-info-header">
+          <h1>Client Info</h1>
+        </div>
         <ul className="client-info-list">
           <li className="client-info-list-item">Client Name: Bob Turner</li>
           <li className="client-info-list-item">
@@ -33,10 +35,12 @@ export function ClientView(props) {
           <li className="client-info-list-item">Date of Birth: 01/01/1990</li>
         </ul>
       </div>
-      <div className="client-view-client-sessions">
-        <h1>Session History:</h1>
+      <div className="client-session-section">
+        <div className="client-session-header">
+          <h1>Session History</h1>
+        </div>
         <ul className="sessions-list">{allSessions}</ul>
-        <button onClick={viewBtnClickHandler}>Add Session</button>
+        <button className="session-button" onClick={viewBtnClickHandler}>Add Session</button>
       </div>
     </div>
   );

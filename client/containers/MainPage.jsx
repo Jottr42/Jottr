@@ -4,6 +4,7 @@ import SideDisplay from '../containers/SideDisplay';
 import ClientDisplay from './ClientDisplay';
 import NavBar from '../components/Navbar';
 import Modal from '../components/Modal';
+import '../stylesheets/MainPage.scss';
 
 import '../styles.scss';
 //import AddTemplateBtn from './components/AddTemplateBtn.jsx';

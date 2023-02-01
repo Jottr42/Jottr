@@ -1,79 +1,95 @@
 .client-view {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column: 2/3;
-  grid-row: 2/2;
-  border: 1px solid black;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
   border-radius: 5px;
   width: 100%;
-  height: 100%;
+  height: 85vh;
   overflow: hidden;
-  padding: 10px;
+  padding: 20px;
   box-sizing: border-box;
+  background-color: rgb(135, 153, 105);
+  box-shadow: inset 0 0 20px 5px rgba(0,0,0,1);
+  font-style: italic;
+
+  
+
+  .client-info-section,
+  .client-session-section {
+    background: linear-gradient(
+      to bottom,
+      rgb(235, 232, 222) 0%,
+      rgb(235, 232, 222) 47%,
+      rgb(255, 255, 255) 100%
+    );
+    border-radius: 15px 15px 5px 5px; /* Top-left and top-right corners */
+
+    border: 1px solid black;
+    box-shadow: 
+      0 10px 20px rgba(0, 0, 0, 0.19),
+      0 6px 6px rgba(0, 0, 0, 0.23);
+  }
+
+  .client-info-list,
+  .session-button,
+  .session-list-item,
+  .session-list-item-btn {
+    border-radius: 5px;
+    border: 1px solid black;
+  }
+
+  .client-info-section,
+  .client-session-section {
+    width: 48%;
+    height: 95%;
+    background-color: white;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .client-info-header,
+  .client-session-header {
+    text-align: center;
+  }
+
+  .client-info-list {
+    padding: 10px;
+    background-color: rgb(194, 191, 212);
+    width: 90%;
+    box-shadow: inset 0 0 5px 5px slategray;
+    
+  }
+
+  .client-info-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    background-color: rgb(194, 191, 212);
+    padding: 1px;
+  }
+
+  .sessions-list {
+    padding: 10px;
+    width: 90%;
+  }
+
+  .session-button {
+    background-color: rgb(135, 128, 143);
+    align-content: center;
+    width: 95%;
+    padding: 10px;
+    font-weight: bold;
+    box-shadow: inset 0 0 20px 5px rgba(0,0,0,0.7);
+    font-style: italic;
+  }
+
+  .session-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-left: 5px;
+    background-color: rgb(194, 191, 212);
+    box-shadow: inset 0 0 5px 5px slategray;
+  }
 }
-
-.client-view-client-info {
-  grid-column: 1/2;
-  border: 1px solid black;
-  width: 50%;
-}
-
-.client-view-client-sessions {
-  grid-column: 2/3;
-  border: 1px solid black;
-  width: 50%;
-}
-
-.client-info-list-item {
-  margin-bottom: 10px;
-}
-
-.sessions-list {
-  list-style: none;
-  padding: 0;
-}
-
-.session-list-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-// .client-info-list {
-//   border: 2px black solid;
-//   display: flex;
-//   flex-direction: column;
-//   // width: 30vw;
-// }
-
-// .client-info-list-item {
-//   padding: 6px;
-// }
-
-// .sessions-list {
-//   // height: 50vh;
-//   // width: 50vw;
-//   display: flex;
-//   flex-direction: column;
-//   gap: 10px;
-//   overflow-y: scroll;
-// }
-
-// .client-view-client-sessions {
-//   display: flex;
-//   flex-direction: column;
-// }
-
-// .session-list-item {
-//   display: flex;
-//   align-items: right;
-//   border: 2px solid black;
-//   padding: 5px;
-// }
-
-// .session-list-item-btn {
-//   height: 20px;
-//   width: 50px;
-//   margin-left: 20px;
-// }

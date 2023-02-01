@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../stylesheets/CreateSession.scss';
 
 export function CreateSession(props) {
   const [notes, setNotes] = useState('these are all my old notes:');
@@ -13,7 +14,7 @@ export function CreateSession(props) {
   };
 
   return (
-    <div>
+    <div className="create-session">
       <textarea
         id="notes"
         name="notes"
