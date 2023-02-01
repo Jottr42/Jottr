@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SessionsList from '../components/SessionsList';
 import ClientList from '../components/ClientList';
 
@@ -8,6 +8,8 @@ const SideDisplay = ({
   setClients,
   controlModal,
   setCurrentClient,
+  currentClient,
+  currentClientSessions,
 }) => {
   return (
     <div>
@@ -18,7 +20,9 @@ const SideDisplay = ({
           setCurrentClient={setCurrentClient}
         />
       )}
-      {viewState && <SessionsList />}
+      {viewState && (
+        <SessionsList currentClientSessions={currentClientSessions} />
+      )}
     </div>
   );
 };

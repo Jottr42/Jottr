@@ -1,17 +1,26 @@
 import React from 'react';
 import '../stylesheets/ClientView.scss';
 
-export const ClientView = ({ changeViewHandler, currentClient }) => {
+export const ClientView = ({
+  changeViewHandler,
+  currentClient,
+  currentClientSessions,
+}) => {
   const viewBtnClickHandler = () => {
     changeViewHandler(true);
   };
-
+  console.log('currentClientSessions', currentClientSessions);
   const allSessions = [];
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < currentClientSessions.length; i++) {
     allSessions.push(
-      <li className="session-list-item" key={i}>
+      <li
+        className="session-list-item"
+        key={i}
+        id={currentClientSessions[i].record_id}
+      >
         <p>
-          Session {i} - {i}/01/2022
+          {currentClientSessions[i].date.slice(0, 10)} -
+          {currentClientSessions[i].goal}
         </p>
         <button className="session-list-item-btn" onClick={viewBtnClickHandler}>
           View

@@ -16,8 +16,11 @@ const MainPage = ({ user, setUser }) => {
   //make a request for all of a user's clients - should be an array of client objects that we save to state here.
   const [clients, setClients] = useState([]);
   const [currentClient, setCurrentClient] = useState({});
+  const [currentClientSessions, setCurrentClientSessions] = useState([]);
+
   console.log(currentClient, 'currentClient');
 
+  //getting all of a users clients
   useEffect(() => {
     const { userID } = user;
 
@@ -35,6 +38,23 @@ const MainPage = ({ user, setUser }) => {
       });
   }, []);
 
+  // getting all of a selected clients sessions
+
+  useEffect(() => {
+    if (!currentClient.client_id) return;
+    axios({
+      method: 'GET',
+      url: `http://localhost:3000/record/allRecords/${currentClient.client_id}`,
+    })
+      .then((response) => {
+        console.log(response.data);
+        setCurrentClientSessions(response.data);
+      })
+      .catch((err) => {
+        console.log(`Error in useEffect getting all client records`, err);
+      });
+  }, [currentClient]);
+
   return (
     <div className="mainpage">
       <NavBar />
@@ -47,6 +67,8 @@ const MainPage = ({ user, setUser }) => {
           setClients={setClients}
           clients={clients}
           setCurrentClient={setCurrentClient}
+          currentClient={currentClient}
+          currentClientSessions={currentClientSessions}
         />
 
         {/* need to pass user_id here */}
@@ -54,6 +76,7 @@ const MainPage = ({ user, setUser }) => {
           viewState={viewOneSession}
           changeViewHandler={setViewOneSession}
           currentClient={currentClient}
+          currentClientSessions={currentClientSessions}
         />
         {showModal && (
           <Modal

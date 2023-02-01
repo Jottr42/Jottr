@@ -3,6 +3,14 @@ const router = require('express').Router();
 
 const recordsController = require('../controllers/recordsController');
 
+router.get(
+  '/allRecords/:client_id',
+  recordsController.getAllRecords,
+  (req, res, next) => {
+    return res.status(200).json(res.locals.allRecordsInfo);
+  }
+);
+
 // create new client
 router.post('/', recordsController.createRecord, (req, res, next) => {
   return res.status(200).json(res.locals.recordCreated);

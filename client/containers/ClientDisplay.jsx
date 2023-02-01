@@ -3,7 +3,12 @@ import { ClientView } from '../components/ClientView';
 import { CreateSession } from '../components/CreateSession';
 //import '../stylesheets/ClientDisplay.scss';
 
-const ClientDisplay = ({ viewState, changeViewHandler, currentClient }) => {
+const ClientDisplay = ({
+  viewState,
+  changeViewHandler,
+  currentClient,
+  currentClientSessions,
+}) => {
   return (
     <div>
       {/* this needs to know the current client */}
@@ -13,6 +18,7 @@ const ClientDisplay = ({ viewState, changeViewHandler, currentClient }) => {
           viewState={viewState}
           client={''}
           currentClient={currentClient}
+          currentClientSessions={currentClientSessions}
         />
       )}
       {/* this needs to know the current session */}
@@ -20,6 +26,7 @@ const ClientDisplay = ({ viewState, changeViewHandler, currentClient }) => {
         <CreateSession
           changeViewHandler={changeViewHandler}
           currentClient={currentClient}
+          currentClientSessions={currentClientSessions}
         />
       )}
     </div>

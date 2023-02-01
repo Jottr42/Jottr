@@ -22,6 +22,25 @@ recordsController.createRecord = async (req, res, next) => {
   }
 };
 
+recordsController.getAllRecords = async (req, res, next) => {
+  console.log(`req.params in GET Record======`, req.params);
+  const { client_id } = req.params;
+  const insertArray = [client_id];
+
+  try {
+    const sqlQuery = `SELECT * FROM records where client_id = $1`;
+    const result = await db.query(sqlQuery, insertArray);
+    console.log(`result======`, result);
+    res.locals.allRecordsInfo = result.rows;
+    return next();
+  } catch (err) {
+    next({
+      log: `Error in recordController.getAllRecords. Details: ${err}`,
+      message: { err: 'An error occurred in recordController.getAllRecords' },
+    });
+  }
+};
+
 recordsController.getRecord = async (req, res, next) => {
   console.log(`req.params in GET Record======`, req.params);
   const { record_id } = req.params;
