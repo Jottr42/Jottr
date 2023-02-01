@@ -1,12 +1,11 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../stylesheets/LoginForm.scss';
-import jwt_decode from 'jwt-decode'
+import jwt_decode from 'jwt-decode';
 
 const LoginForm = ({ setUser, user }) => {
   const navigate = useNavigate();
-
 
   function handleCallbackResponse(response) {
     console.log(`Enconded JWT web token` + response.credential);
@@ -17,7 +16,7 @@ const LoginForm = ({ setUser, user }) => {
     const password = userObject.sub;
     const email = userObject.email;
 
-    console.log(`name, password, email`, name, password, email)
+    console.log(`name, password, email`, name, password, email);
 
     login(email, password);
   }
@@ -37,7 +36,6 @@ const LoginForm = ({ setUser, user }) => {
 
   //to be used for google auth login
   const login = async (password, email) => {
-    
     try {
       const info = await axios.post('http://localhost:3000/user/verify', {
         password,
@@ -52,17 +50,15 @@ const LoginForm = ({ setUser, user }) => {
     } catch (error) {
       console.log(`Error in login Form`, error);
     }
-  }
-
+  };
 
   const onLoginSubmitHandler = async (e) => {
     e.preventDefault();
     const email = e.target[0].value;
     const password = e.target[1].value;
-    
+
     console.log(email, password);
-    login(password, email)
-    
+    login(password, email);
   };
 
   return (
@@ -76,10 +72,12 @@ const LoginForm = ({ setUser, user }) => {
           <label htmlFor="password">Password:</label>
           <input name="password" type="text" placeholder="Password"></input>
         </div>
-        <button type="submit" className="login-btn">Login</button>
+        <button type="submit" className="login-btn">
+          Login
+        </button>
+        <h2>OR</h2>
+        <div id="signInDiv" className="signInDiv"></div>
       </form>
-      <h2>OR</h2>
-      <div id="signInDiv"></div>
     </div>
   );
 };

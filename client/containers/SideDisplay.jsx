@@ -27,6 +27,7 @@ const SideDisplay = ({
         <SessionsList
           currentClientSessions={currentClientSessions}
           setCurrentSession={setCurrentSession}
+          currentClient={currentClient}
         />
       )}
     </div>

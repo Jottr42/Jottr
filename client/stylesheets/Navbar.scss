@@ -16,8 +16,8 @@ nav {
   border-radius: 5px;
   height: 90%;
   overflow: hidden;
-  font-weight: bold;
-  color: black;
+  color: rgb(235, 232, 222);
+  cursor: pointer;
 }
 
 .banner {
@@ -48,7 +48,7 @@ span {
   animation-delay: 1s;
   opacity: 0;
   margin: 0 0.5em;
-  
+
   @keyframes letter-fade-in {
     0% {
       opacity: 0;
@@ -58,4 +58,3 @@ span {
     }
   }
 }
-

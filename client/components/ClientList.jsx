@@ -79,6 +79,7 @@ const ClientList = ({
                   {client.name}
                 </p>
                 <button
+                  className="remove-btn"
                   type="button"
                   id={client.client_id}
                   onClick={handleRemoveClientClick}
