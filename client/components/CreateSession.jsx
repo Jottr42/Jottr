@@ -105,6 +105,7 @@ export function CreateSession({
           id="notes"
           name="notes"
           defaultValue={textAreaVal}
+          key={textAreaVal}
           onChange={handleNotesChange}
         />
 
@@ -114,13 +115,19 @@ export function CreateSession({
           <input
             type="date"
             id="sessionDate"
+            key={sessionDateVal}
             name="sessionDate"
             defaultValue={sessionDateVal}
           />
         </label>
         <label htmlFor="sessionGoals">
           Session Goal:
-          <input type="text" id="sessionGoals" defaultValue={sessionGoalVal} />
+          <input
+            type="text"
+            id="sessionGoals"
+            defaultValue={sessionGoalVal}
+            key={sessionGoalVal}
+          />
         </label>
         <label htmlFor="nextSessionGoals">
           Next Session Goal:
@@ -129,6 +136,7 @@ export function CreateSession({
             id="nextSessionGoals"
             name="nextSessionGoals"
             defaultValue={upcomingVal}
+            key={upcomingVal}
           />
         </label>
 
