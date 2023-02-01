@@ -48,7 +48,7 @@ const Modal = ({ user, controlModal, setClients }) => {
               Email:
               <input type="text" name="email" />
             </label>
-            <button type="submit">ADD CLIENT</button>
+            <button type="submit" className="submitBtn">Add Client</button>
           </form>
         </div>
         <div className="modal-footer">
