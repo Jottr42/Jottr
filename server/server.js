@@ -11,10 +11,12 @@ require('dotenv').config();
 const { OAuth2Client } = require("google-auth-library");
 const jwt = require("jsonwebtoken");
 
-app.use(cors({
-  origin: ["http://localhost:3000"],
-  methods: "GET, POST, PUT, DELETE, OPTIONS"
-}));
+app.use(cors());
+
+// {
+//   origin: ["http://localhost:3000"],
+//   methods: "GET, POST, PUT, DELETE, OPTIONS"
+// }
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
