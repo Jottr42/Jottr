@@ -12,8 +12,8 @@ clientController.createClient = async (req, res, next) => {
   `;
   try {
     const result = await db.query(sqlQuery, insertArray);
-    console.log(`result =======================`, result);
-    res.locals.clientCreated = 'Client was successfully created';
+    console.log(`result IN CREATECLIENT=======================`, result);
+    res.locals.clientCreated = 'CLIENT CREATED';
     return next();
   } catch (err) {
     next({
@@ -38,6 +38,24 @@ clientController.getClient = async (req, res, next) => {
     next({
       log: `Error in clientController.getClient. Details: ${err}`,
       message: { err: 'An error occurred in clientController.getClient' },
+    });
+  }
+};
+
+clientController.getAllClients = async (req, res, next) => {
+  const { user_id } = req.params;
+  const insertArray = [user_id];
+
+  try {
+    const sqlQuery = `SELECT * FROM clients WHERE user_id = $1`;
+    const result = await db.query(sqlQuery, insertArray);
+    console.log(`result======`, result);
+    res.locals.allClientsInfo = result.rows;
+    return next();
+  } catch (err) {
+    next({
+      log: `Error in clientController.getAllClients. Details: ${err}`,
+      message: { err: 'An error occurred in clientController.getAllClients' },
     });
   }
 };

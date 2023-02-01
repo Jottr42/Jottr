@@ -3,7 +3,7 @@ const db = require('../models/jottrModel.js');
 const recordsController = {};
 
 recordsController.createRecord = async (req, res, next) => {
-  console.log(`req.body======`, req.body);
+  console.log(`req.body IN CREATE RECORD======`, req.body);
   const { date, goal, session_notes, upcoming, client_id } = req.body;
   const insertArray = [date, goal, session_notes, upcoming, client_id];
   const sqlQuery = `
@@ -18,6 +18,25 @@ recordsController.createRecord = async (req, res, next) => {
     next({
       log: `Error in recordController.createRecord. Details: ${err}`,
       message: { err: 'An error occurred in recordController.createRecord' },
+    });
+  }
+};
+
+recordsController.getAllRecords = async (req, res, next) => {
+  console.log(`req.params in GET Record======`, req.params);
+  const { client_id } = req.params;
+  const insertArray = [client_id];
+
+  try {
+    const sqlQuery = `SELECT * FROM records where client_id = $1`;
+    const result = await db.query(sqlQuery, insertArray);
+    console.log(`result======`, result);
+    res.locals.allRecordsInfo = result.rows;
+    return next();
+  } catch (err) {
+    next({
+      log: `Error in recordController.getAllRecords. Details: ${err}`,
+      message: { err: 'An error occurred in recordController.getAllRecords' },
     });
   }
 };

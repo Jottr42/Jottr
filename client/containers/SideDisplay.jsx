@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SessionsList from '../components/SessionsList';
 import ClientList from '../components/ClientList';
 import '../stylesheets/Navbar.scss';
 
-const SideDisplay = (props) => {
+const SideDisplay = ({
+  viewState,
+  clients,
+  setClients,
+  controlModal,
+  setCurrentClient,
+  currentClient,
+  currentClientSessions,
+}) => {
   return (
     <div>
-      {!props.viewState && <ClientList controlModal={props.controlModal} />}
-      {props.viewState && <SessionsList />}
+      {!viewState && (
+        <ClientList
+          controlModal={controlModal}
+          clients={clients}
+          setCurrentClient={setCurrentClient}
+        />
+      )}
+      {viewState && (
+        <SessionsList currentClientSessions={currentClientSessions} />
+      )}
     </div>
   );
 };
