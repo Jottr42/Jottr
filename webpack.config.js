@@ -19,9 +19,11 @@ module.exports = {
       template: './index.html',
       filename: './index.html',
     }),
+
   ],
 
   devServer: {
+    historyApiFallback: true,
     static: {
       directory: path.join(__dirname, '/client'),
     },

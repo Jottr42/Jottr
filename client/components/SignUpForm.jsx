@@ -1,54 +1,70 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../stylesheets/SignUpForm.scss';
 
-const SignUpForm = (props) => {
+const SignUpForm = ({ showModal, setLogin, setSignup }) => {
   const navigate = useNavigate();
-  const onSignUpSubmitHandler = (e) => {
+  const onSignUpSubmitHandler = async (e) => {
     e.preventDefault();
-    const firstName = e.target[0].value;
-    const lastName = e.target[1].value;
-    const username = e.target[2].value;
-    const password = e.target[3].value;
-    const email = e.target[4].value;
+    const name = e.target[0].value;
+    const password = e.target[2].value;
+    const email = e.target[1].value;
 
-    console.log(firstName, lastName);
-    console.log(username, password);
+    console.log(name);
+    console.log(password);
     console.log(email);
+
+    //create user
+    try {
+      const info = await axios.post('http://localhost:3000/user/create', {
+        name,
+        password,
+        email,
+      });
+      if (info.data === 'User was successfully created') {
+        //setLogin true
+        setLogin(true);
+        //setSignup false;
+        setSignup(false);
+        //send them to the login page
+        showModal();
+      }
+      console.log(`info====`, info);
+    } catch (error) {
+      console.log(`Error in Signup Form`, error);
+    }
   };
 
   return (
-    <div>
+    <div className="form-card">
       <form onSubmit={onSignUpSubmitHandler}>
-        <label htmlFor="firstName">
-          First Name:
-          <input name="firstName" type="text" placeholder="Enter First Name" />
+        <label htmlFor="fullName" className="form-label">
+          Full Name:
+          <input name="fullName" type="text" placeholder="Enter Full Name" className="form-input"/>
         </label>
-        <label htmlFor="firstName">
-          Last Name:
-          <input name="lastName" type="text" placeholder="Enter Last Name" />
-        </label>
-        <label htmlFor="email">
+        <label htmlFor="email" className="form-label">
           Email Address:
-          <input name="email" type="text" placeholder="valid@email.com" />
+          <input name="email" type="text" placeholder="valid@email.com" className="form-input"/>
         </label>
-        <label htmlFor="username">
+        {/* <label htmlFor="username">
           Username:
           <input name="username" type="text" placeholder="Choose Username" />
-        </label>
-        <label htmlFor="password">
+        </label> */}
+        <label htmlFor="password" className="form-label">
           Password:
-          <input name="password" type="text" placeholder="Choose Password" />
+          <input name="password" type="text" placeholder="Choose Password" className="form-input"/>
         </label>
-        <label htmlFor="confirmPass">
+        <label htmlFor="confirmPass" className="form-label">
           Confirm Password:
           <input
             name="confirmPass"
             type="text"
             placeholder="Confirm Password"
+            className="form-input"
           />
         </label>
-        <button type="submit">REGISTER</button>
+        <button type="submit" className="form-submit-btn">Register</button>
       </form>
     </div>
   );

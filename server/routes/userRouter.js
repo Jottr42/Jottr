@@ -1,12 +1,33 @@
 // const express = require('express');
 const router = require('express').Router();
 
+const cookieController = require('../controllers/cookieController');
 const userController = require('../controllers/userController');
 
 // create new user
-router.post('/', userController.createUser, (req, res, next) => {
-  return res.status(200).json(res.locals.userCreated);
-});
+router.post(
+  '/create',
+  userController.createUser,
+  cookieController.set,
+  (req, res, next) => {
+    return res.status(200).json(res.locals.userCreated);
+  }
+);
+
+// verify new user
+router.post(
+  '/verify',
+  userController.verifyUser,
+  cookieController.set,
+  (req, res, next) => {
+    return res.status(200).json(res.locals.userVerification);
+  }
+);
+
+// create new user
+// router.get('/logout', cookieController.delete, (req, res, next) => {
+//   return res.status(200).json(res.locals.cookieDeleted);
+// });
 
 //get user info
 router.get('/:user_id', userController.getUser, (req, res, next) => {
