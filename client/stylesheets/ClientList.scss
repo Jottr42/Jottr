@@ -1,20 +1,26 @@
 .client-list-container {
-  display: flex;
+  display: inline-flex;
   grid-row: 2/3;
   grid-column: 1/2;
   display: flex;
-  border: 1px solid black;
-  width: 100%;
+  width: 90%;
   align-self: flex-start;
   align-items: center;
-  height: 80vh;
-  background-color: rgb(41, 53, 50);
-  transition: width 0.5s ease;
+  height: 82vh;
+  background-color: rgb(135, 153, 105);
   overflow: hidden;
   padding: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+  box-shadow: inset 0 0 20px 5px rgba(0,0,0,1);
 
-  //border: 1px solid black;
-  //padding: 10px;
+  @media (max-width: 960px) {
+    max-width: 100%;
+  }
+
+  @media (min-width: 960px) {
+    min-width: 33.33%;
+  }
 }
 
 .client-list {
@@ -22,6 +28,7 @@
   flex-direction: column;
   align-content: center;
   width: 100%;
+  
 }
 
 .client-list__search-input {
@@ -34,6 +41,7 @@
   border-radius: 5px;
   font-size: 14px;
   color: rgb(41, 53, 50);
+  
 }
 
 .client-list__client-list {
@@ -45,8 +53,9 @@
   overflow-y: auto;
   min-height: auto;
   max-height: calc(
-    100% - 50pc
+    100% - 50px
   ); /* subtract the height of the add client button */
+  
 }
 
 .client-list__client {
@@ -58,6 +67,12 @@
   margin-bottom: 10px;
   background-color: white;
   height: 50px;
+  background: linear-gradient(
+      to bottom,
+      rgb(235, 232, 222) 0%,
+      rgb(235, 232, 222) 47%,
+      rgb(255, 255, 255) 100%
+    );
 }
 
 .client-list__add-client {
@@ -74,7 +89,11 @@
   border-radius: 5px;
   width: 95%;
   padding: 10px;
+  background-color: rgb(135, 128, 143);
+  font-weight: bold;
+  box-shadow: inset 0 0 20px 5px rgba(0,0,0,0.7);
 }
+
 
 // .client-list {
 //   background-color: rgb(41, 53, 50);

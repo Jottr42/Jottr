@@ -1,4 +1,5 @@
 import React from 'react';
+import '../stylesheets/Modal.scss';
 
 const Modal = (props) => {
   const handleCloseModalClick = () => {

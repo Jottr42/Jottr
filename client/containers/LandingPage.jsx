@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoginForm from '../components/LoginForm';
 import SignUpForm from '../components/SignUpForm';
+import '../stylesheets/LandingPage.scss';
 
 const LandingPage = ({ user, setUser }) => {
   //usestate for showing modals set to false
   const [login, setLogin] = useState(false);
   const [signup, setSignup] = useState(false);
-
-  //create buttons to either log in or sign up
 
   //function that will show one modal or another
   const showModal = (str) => {
@@ -38,24 +37,29 @@ const LandingPage = ({ user, setUser }) => {
   };
 
   return (
-    <div data-testid='landing'>
-      <h1>Hello to Jottr</h1>
-      <button
-        onClick={() => {
-          setLogin(true);
-          showModal();
-        }}
-      >
-        Log In
-      </button>
-      <button
-        onClick={() => {
-          setSignup(true);
-          showModal();
-        }}
-      >
-        Signup
-      </button>
+    <div className="landing-page">
+      <h1 className="title">Welcome To Jottr</h1>
+      <div className="buttons-container">
+        <button
+          className="login-button"
+          onClick={() => {
+            setLogin(true);
+            showModal();
+          }}
+        >
+          Log In
+        </button>
+        <button
+          className="signup-button"
+          onClick={() => {
+            setSignup(true);
+            showModal();
+          }}
+        >
+          Signup
+        </button>
+      </div>
+
       {showModal()}
     </div>
   );
