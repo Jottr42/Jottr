@@ -13,6 +13,15 @@ router.get('/:client_id', clientController.getClient, (req, res, next) => {
   return res.status(200).json(res.locals.clientInfo);
 });
 
+//get clients info
+router.get(
+  '/allClients/:user_id',
+  clientController.getAllClients,
+  (req, res, next) => {
+    return res.status(200).json(res.locals.allClientsInfo);
+  }
+);
+
 //update client
 // router.put('/client_id', clientController.updateClient, (req, res, next) => {
 //   return res.status(200).json(res.locals.updatedClient);
