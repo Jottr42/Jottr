@@ -17,6 +17,7 @@ const NavBar = () => {
           Logout
         </button>
       </div>
+      <div className="banner">Jottr</div>
     </nav>
   );
 };

@@ -1,4 +1,6 @@
 import React from 'react';
+import '../stylesheets/SessionsList.scss';
+
 
 const SessionsList = ({ currentClientSessions }) => {
   // const allSessions = props.sessions.map((sess, i) => {
@@ -14,7 +16,7 @@ const SessionsList = ({ currentClientSessions }) => {
   });
 
   return (
-    <div>
+    <div className="sessions-list-inner">
       <h2>Sessions List</h2>
       <ul>{allSessions}</ul>
     </div>

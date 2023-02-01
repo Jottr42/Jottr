@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 export function CreateSession({ currentClient, changeViewHandler }) {
   const [notes, setNotes] = useState('these are all my old notes:');
@@ -47,7 +46,7 @@ export function CreateSession({ currentClient, changeViewHandler }) {
   };
 
   return (
-    <div>
+    <div className="create-session">
       <form onSubmit={handleSessionSubmit}>
         <textarea
           id="notes"

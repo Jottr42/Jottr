@@ -30,14 +30,14 @@ const LoginForm = ({ setUser, user }) => {
   return (
     <div className="formCard">
       <form onSubmit={onLoginSubmitHandler}>
-        <label htmlFor="email">
-          Email:
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
           <input name="email" type="text" placeholder="Email"></input>
-        </label>
-        <label htmlFor="password">
-          Password:
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
           <input name="password" type="text" placeholder="Password"></input>
-        </label>
+        </div>
         <button type="submit">LOGIN</button>
       </form>
     </div>

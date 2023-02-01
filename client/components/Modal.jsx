@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import '../stylesheets/Modal.scss';
 
 const Modal = ({ user, controlModal, setClients }) => {
   const handleCloseModalClick = () => {

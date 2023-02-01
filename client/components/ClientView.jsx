@@ -28,11 +28,13 @@ export const ClientView = ({
       </li>
     );
   }
-  //we will be recieving a current client, but if a specific client has not been picked yet, we will just render a div that says please choose a client
+
   return (
     <div className="client-view">
-      <div className="client-view-client-info">
-        <h1>Client Info:</h1>
+      <div className="client-info-section">
+        <div className="client-info-header">
+          <h1>Client Info</h1>
+        </div>
         <ul className="client-info-list">
           <li className="client-info-list-item">
             Client Name: {currentClient.name}
@@ -42,11 +44,15 @@ export const ClientView = ({
           </li>
         </ul>
       </div>
-      <div className="client-view-client-sessions">
-        <h1>Session History:</h1>
+      <div className="client-session-section">
+        <div className="client-session-header">
+          <h1>Session History</h1>
+        </div>
         <ul className="sessions-list">{allSessions}</ul>
         {currentClient.client_id && (
-          <button onClick={viewBtnClickHandler}>Add Session</button>
+          <button className="session-button" onClick={viewBtnClickHandler}>
+            Add Session
+          </button>
         )}
       </div>
     </div>

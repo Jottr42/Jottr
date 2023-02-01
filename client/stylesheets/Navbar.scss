@@ -4,14 +4,59 @@ nav {
   grid-column: 1 / 3;
   padding-top: 5px;
   padding-bottom: 5px;
-  padding-left: 10px;
   padding-right: 10px;
-  justify-content: flex-end;
+  overflow-y: hidden;
+  justify-content: left;
 }
 
 .nav-button {
-  margin-left: auto;
-  margin-right: auto;
-  padding: 10px;
-  justify-content: space-between;
+  box-shadow: inset 0 0 20px 5px rgba(0, 0, 0, 0.5);
+  margin-right: 2px;
+  padding: 20px;
+  background-color: rgb(135, 128, 143);
+  border-radius: 5px;
+  height: 90%;
+  overflow: hidden;
+  font-weight: bold;
+  color: black;
 }
+
+.banner {
+  animation: banner-fadeIn 1s ease-out forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 2;
+  font-style: italic;
+  font-size: 60px;
+  color: black;
+  text-shadow: 2px 2px 3px black;
+  width: 66.66%;
+  font-stretch: ultra-expanded;
+}
+
+@keyframes banner-fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+span {
+  animation: letter-fade-in 2s ease-in-out forwards;
+  animation-delay: 1s;
+  opacity: 0;
+  margin: 0 0.5em;
+  
+  @keyframes letter-fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
