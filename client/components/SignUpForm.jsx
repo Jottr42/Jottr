@@ -1,8 +1,37 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+// import useFetch from "../../hooks/useFetch"
+
+
+// https://developers.google.com/identity/gsi/web/reference/js-reference
 
 const SignUpForm = ({ showModal, setLogin, setSignup }) => {
+
+  // const { handleGoogle, loading, error } = useFetch(
+  //   "http://localhost:8080/"
+  // );
+
+  // useEffect(() => {
+  //   /* global google */
+  //   if (window.google) {
+  //     google.accounts.id.initialize({
+  //       client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+  //       callback: handleGoogle,
+  //     });
+
+  //     google.accounts.id.renderButton(document.getElementById("signUpDiv"), {
+  //       // type: "standard",
+  //       theme: "filled_black",
+  //       // size: "small",
+  //       text: "continue_with",
+  //       shape: "pill",
+  //     });
+
+  //     // google.accounts.id.prompt()
+  //   }
+  // }, [handleGoogle]);
+
   const navigate = useNavigate();
   const onSignUpSubmitHandler = async (e) => {
     e.preventDefault();
@@ -64,6 +93,13 @@ const SignUpForm = ({ showModal, setLogin, setSignup }) => {
         </label>
         <button type="submit">REGISTER</button>
       </form>
+
+      {/* {error && <p style={{ color: "red" }}>{error}</p>}
+        {loading ? (
+          <div>Loading....</div>
+        ) : (
+          <div id="signUpDiv" data-text="signup_with"></div>
+        )} */}
     </div>
   );
 };
