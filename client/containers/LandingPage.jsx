@@ -59,6 +59,7 @@ const LandingPage = ({ user, setUser }) => {
           Signup
         </button>
       </div>
+
       {showModal()}
     </div>
   );
