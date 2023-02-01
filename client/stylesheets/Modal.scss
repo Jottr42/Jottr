@@ -21,6 +21,12 @@
   align-items: center;
   padding: 20px;
   box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.7);
+  background: linear-gradient(
+      to bottom,
+      rgb(235, 232, 222) 0%,
+      rgb(235, 232, 222) 47%,
+      rgb(255, 255, 255) 100%
+    );
 }
 
 .modal-title {
