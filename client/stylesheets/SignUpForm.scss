@@ -1,0 +1,99 @@
+$primary-color: rgb(135, 153, 105);
+$secondary-color: rgb(50, 61, 57);
+$tertiary-color: rgb(95, 83, 89);
+$neutral-color: rgb(194, 191, 212);
+$body-color: rgb(245, 240, 238);
+$mauve: rgb(224, 176, 255);
+
+.form-card {
+  background-color: $body-color;
+  width: 500px;
+  height: 450px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.7);
+  background: linear-gradient(
+    to bottom,
+    rgb(235, 232, 222) 0%,
+    rgb(235, 232, 222) 47%,
+    rgb(255, 255, 255) 100%
+  );
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    label {
+      font-size: 18px;
+      color: $secondary-color;
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      &[for="fullName"] {
+        input {
+          width: 80%;
+          height: 40px;
+          margin-top: 10px;
+          padding: 10px;
+          font-size: 18px;
+          border-radius: 5px;
+          border: 1px solid $tertiary-color;
+        }
+      }
+      &[for="email"] {
+        input {
+          width: 80%;
+          height: 40px;
+          margin-top: 10px;
+          padding: 10px;
+          font-size: 18px;
+          border-radius: 5px;
+          border: 1px solid $tertiary-color;
+        }
+      }
+      &[for="password"] {
+        input {
+          width: 80%;
+          height: 40px;
+          margin-top: 10px;
+          padding: 10px;
+          font-size: 18px;
+          border-radius: 5px;
+          border: 1px solid $tertiary-color;
+        }
+      }
+      &[for="confirmPass"] {
+        input {
+          width: 80%;
+          height: 40px;
+          margin-top: 10px;
+          padding: 10px;
+          font-size: 18px;
+          border-radius: 5px;
+          border: 1px solid $tertiary-color;
+        }
+      }
+    }
+
+    button {
+      width: 80%;
+      height: 50px;
+      margin-top: 20px;
+      font-size: 18px;
+      background-color: $primary-color;
+      color: white;
+      border: 1px solid $tertiary-color;
+      border-radius: 5px;
+    }
+  }
+}
+
+

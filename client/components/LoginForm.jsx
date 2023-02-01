@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../stylesheets/LoginForm.scss';
 
 const LoginForm = ({ setUser, user }) => {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ const LoginForm = ({ setUser, user }) => {
           <label htmlFor="password">Password:</label>
           <input name="password" type="text" placeholder="Password"></input>
         </div>
-        <button type="submit">LOGIN</button>
+        <button type="submit" className="login-btn">Login</button>
       </form>
     </div>
   );
