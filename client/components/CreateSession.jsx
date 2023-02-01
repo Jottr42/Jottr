@@ -13,14 +13,6 @@ export function CreateSession({ currentClient, changeViewHandler }) {
     changeViewHandler(false);
   };
 
-  //   {
-  //     "date": "2022-01-28",
-  //     "goal": "work on something important",
-  //     "session_notes": "Lorem ipsum dolor sit amet, consectetur adipiscing elit,"
-  //     "upcoming": "work on getting something better for next session",
-  //     "client_id": "2"
-  // }
-
   const handleSessionSubmit = async (event) => {
     event.preventDefault();
     const session_notes = event.target[0].value;

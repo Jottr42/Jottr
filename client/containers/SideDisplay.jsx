@@ -8,6 +8,7 @@ const SideDisplay = ({
   setClients,
   controlModal,
   setCurrentClient,
+  user,
 }) => {
   return (
     <div>
@@ -18,7 +19,7 @@ const SideDisplay = ({
           setCurrentClient={setCurrentClient}
         />
       )}
-      {viewState && <SessionsList />}
+      {viewState && <SessionsList user={user} />}
     </div>
   );
 };

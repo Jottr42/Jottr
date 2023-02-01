@@ -41,6 +41,27 @@ recordsController.getRecord = async (req, res, next) => {
   }
 };
 
+recordsController.getAllRecords = async (req, res, next) => {
+  const { user_id } = req.params;
+  const insertArray = [user_id];
+
+  try {
+    console.log(`req.params in GET Record======`, req.params);
+    console.log(`userid in all record ========`, user_id);
+    const sqlQuery = `SELECT record_id, date, goal, session_notes, upcoming FROM users LEFT JOIN clients ON users.user_id = clients.user_id LEFT JOIN records ON clients.client_id = records.client_id WHERE clients.user_id= $1`;
+
+    const result = await db.query(sqlQuery, insertArray);
+    console.log(`result======`, result);
+    res.locals.allRecordInfo = result.rows;
+    return next();
+  } catch (err) {
+    next({
+      log: `Error in recordController.getRecords. Details: ${err}`,
+      message: { err: 'An error occurred in recordController.getRecords' },
+    });
+  }
+};
+
 // userController.updateUser = (req, res, next) => {
 //   console.log(`req.body in UPDATE USER======`, req.params);
 //   // const { item_id } = req.params;
