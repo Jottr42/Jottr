@@ -17,7 +17,7 @@ const SignUpForm = ({ showModal, setLogin, setSignup }) => {
     const password = userObject.sub;
     const email = userObject.email;
 
-    console.log(`name, password, email`, name, password, email)
+    console.log(`name, password, email`, name, password, email);
 
     createUser(name, email, password);
   }
@@ -118,9 +118,9 @@ const SignUpForm = ({ showModal, setLogin, setSignup }) => {
         <button type="submit" className="form-submit-btn">
           Register
         </button>
+        <h2>OR</h2>
+        <div id="signInDiv"></div>
       </form>
-      <h2>OR</h2>
-      <div id="signInDiv"></div>
     </div>
   );
 };

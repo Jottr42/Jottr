@@ -56,3 +56,22 @@ $neutral-color: rgb(194, 191, 212);
     }
   }
 }
+
+.session-list-ul {
+  background-color: #615259;
+  overflow-y: auto;
+  height: 400px;
+  border-radius: 4px;
+}
+
+.session-list-item {
+  background-color: white;
+  padding: 6px;
+  margin: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  &:hover {
+    box-shadow: rgba(249, 246, 246, 0.16) 0px 1px 4px;
+    background-color: #c3bfd6;
+  }
+}

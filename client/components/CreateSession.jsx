@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../stylesheets/SessionsList.scss';
+import '../stylesheets/CreateSession.scss';
 
 export function CreateSession({
   currentClient,
@@ -100,55 +102,60 @@ export function CreateSession({
 
   return (
     <div className="create-session">
-      <form onSubmit={handleSessionSubmit}>
+      <form onSubmit={handleSessionSubmit} className="create-session-form">
         <textarea
           id="notes"
           name="notes"
           defaultValue={textAreaVal}
           key={textAreaVal}
           onChange={handleNotesChange}
+          className="sessions-list-notes text-area"
         />
-
-        <hr />
-
-        <label htmlFor="sessionDate">
-          <input
-            type="date"
-            id="sessionDate"
-            key={sessionDateVal}
-            name="sessionDate"
-            defaultValue={sessionDateVal}
-          />
-        </label>
-        <label htmlFor="sessionGoals">
-          Session Goal:
-          <input
-            type="text"
-            id="sessionGoals"
-            defaultValue={sessionGoalVal}
-            key={sessionGoalVal}
-          />
-        </label>
-        <label htmlFor="nextSessionGoals">
-          Next Session Goal:
-          <input
-            type="text"
-            id="nextSessionGoals"
-            name="nextSessionGoals"
-            defaultValue={upcomingVal}
-            key={upcomingVal}
-          />
-        </label>
-
-        <button type="submit" disabled={!notes}>
-          Submit
-        </button>
+        <div className="create-sessions-inputs-container">
+          <label htmlFor="sessionDate">
+            Session Date:
+            <input
+              type="date"
+              id="sessionDate"
+              key={sessionDateVal}
+              name="sessionDate"
+              defaultValue={sessionDateVal}
+              className="create-session-input"
+            />
+          </label>
+          <label htmlFor="sessionGoals">
+            Session Goal:
+            <input
+              type="text"
+              id="sessionGoals"
+              defaultValue={sessionGoalVal}
+              key={sessionGoalVal}
+              className="create-session-input"
+            />
+          </label>
+          <label htmlFor="nextSessionGoals">
+            Next Session Goal:
+            <input
+              type="text"
+              id="nextSessionGoals"
+              name="nextSessionGoals"
+              defaultValue={upcomingVal}
+              key={upcomingVal}
+              className="create-session-input"
+            />
+          </label>
+        </div>
+        <div className="form-buttons">
+          <button type="submit" disabled={!notes}>
+            Submit
+          </button>
+          <button disabled={!notes} onClick={handleDeleteSessionClick}>
+            Delete Session
+          </button>
+          <button onClick={handleBackBtnClick}> Back</button>
+        </div>
       </form>
-
-      <button disabled={!notes} onClick={handleDeleteSessionClick}>
-        Delete Session
-      </button>
-      <button onClick={handleBackBtnClick}> Back</button>
+      <hr />
     </div>
   );
 }

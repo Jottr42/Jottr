@@ -20,7 +20,12 @@ const SessionsList = ({
 
   const allSessions = currentClientSessions.map((sess, i) => {
     return (
-      <li key={i} id={sess.record_id} onClick={handleSessionListItemClick}>
+      <li
+        key={i}
+        id={sess.record_id}
+        onClick={handleSessionListItemClick}
+        className="session-list-item"
+      >
         {sess.date.slice(0, 10)}
       </li>
     );
@@ -33,7 +38,7 @@ const SessionsList = ({
   return (
     <div className="sessions-list-inner">
       <h2>Sessions List</h2>
-      <ul>{allSessions}</ul>
+      <ul className="session-list-ul">{allSessions}</ul>
     </div>
   );
 };
