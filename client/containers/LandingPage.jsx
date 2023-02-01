@@ -38,7 +38,7 @@ const LandingPage = ({ user, setUser }) => {
   };
 
   return (
-    <div>
+    <div data-testid='landing'>
       <h1>Hello to Jottr</h1>
       <button
         onClick={() => {
