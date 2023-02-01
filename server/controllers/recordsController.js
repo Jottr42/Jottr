@@ -3,7 +3,7 @@ const db = require('../models/jottrModel.js');
 const recordsController = {};
 
 recordsController.createRecord = async (req, res, next) => {
-  console.log(`req.body======`, req.body);
+  console.log(`req.body IN CREATE RECORD======`, req.body);
   const { date, goal, session_notes, upcoming, client_id } = req.body;
   const insertArray = [date, goal, session_notes, upcoming, client_id];
   const sqlQuery = `

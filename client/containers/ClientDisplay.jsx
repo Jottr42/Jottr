@@ -3,20 +3,24 @@ import { ClientView } from '../components/ClientView';
 import { CreateSession } from '../components/CreateSession';
 //import '../stylesheets/ClientDisplay.scss';
 
-const ClientDisplay = (props) => {
+const ClientDisplay = ({ viewState, changeViewHandler, currentClient }) => {
   return (
     <div>
       {/* this needs to know the current client */}
-      {!props.viewState && (
+      {!viewState && (
         <ClientView
-          changeViewHandler={props.changeViewHandler}
-          viewState={props.viewState}
+          changeViewHandler={changeViewHandler}
+          viewState={viewState}
           client={''}
+          currentClient={currentClient}
         />
       )}
       {/* this needs to know the current session */}
-      {props.viewState && (
-        <CreateSession changeViewHandler={props.changeViewHandler} />
+      {viewState && (
+        <CreateSession
+          changeViewHandler={changeViewHandler}
+          currentClient={currentClient}
+        />
       )}
     </div>
   );

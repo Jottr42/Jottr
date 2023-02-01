@@ -1,9 +1,9 @@
 import React from 'react';
 import '../stylesheets/ClientView.scss';
 
-export function ClientView(props) {
+export const ClientView = ({ changeViewHandler, currentClient }) => {
   const viewBtnClickHandler = () => {
-    props.changeViewHandler(true);
+    changeViewHandler(true);
   };
 
   const allSessions = [];
@@ -25,19 +25,21 @@ export function ClientView(props) {
       <div className="client-view-client-info">
         <h1>Client Info:</h1>
         <ul className="client-info-list">
-          <li className="client-info-list-item">Client Name: Bob Turner</li>
           <li className="client-info-list-item">
-            Client Email: bobturner99@gmail.com
+            Client Name: {currentClient.name}
           </li>
-          <li className="client-info-list-item">Client Phone: 000-000-0000</li>
-          <li className="client-info-list-item">Date of Birth: 01/01/1990</li>
+          <li className="client-info-list-item">
+            Client Email: {currentClient.email}
+          </li>
         </ul>
       </div>
       <div className="client-view-client-sessions">
         <h1>Session History:</h1>
         <ul className="sessions-list">{allSessions}</ul>
-        <button onClick={viewBtnClickHandler}>Add Session</button>
+        {currentClient.client_id && (
+          <button onClick={viewBtnClickHandler}>Add Session</button>
+        )}
       </div>
     </div>
   );
-}
+};

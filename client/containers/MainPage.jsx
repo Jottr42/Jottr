@@ -15,7 +15,8 @@ const MainPage = ({ user, setUser }) => {
   const [showModal, setShowModal] = useState(false);
   //make a request for all of a user's clients - should be an array of client objects that we save to state here.
   const [clients, setClients] = useState([]);
-  const [currentClient, setCurrentClient] = useState(null);
+  const [currentClient, setCurrentClient] = useState({});
+  console.log(currentClient, 'currentClient');
 
   useEffect(() => {
     const { userID } = user;
@@ -45,6 +46,7 @@ const MainPage = ({ user, setUser }) => {
           user={user}
           setClients={setClients}
           clients={clients}
+          setCurrentClient={setCurrentClient}
         />
 
         {/* need to pass user_id here */}
