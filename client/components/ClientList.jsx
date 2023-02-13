@@ -75,7 +75,11 @@ const ClientList = ({
                 className="client-list__client"
                 id={client.client_id}
               >
-                <p onClick={handleClientClick} id={client.client_id}>
+                <p
+                  onClick={handleClientClick}
+                  id={client.client_id}
+                  className="client-list-p"
+                >
                   {client.name}
                 </p>
                 <button
