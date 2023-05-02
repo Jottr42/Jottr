@@ -1,7 +1,13 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import '../stylesheets/ClientList.scss';
 
-const ClientList = ({ clients, controlModal, setCurrentClient }) => {
+const ClientList = ({
+  clients,
+  controlModal,
+  setCurrentClient,
+  setClients,
+}) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleAddClientBtnClick = () => {
@@ -19,6 +25,33 @@ const ClientList = ({ clients, controlModal, setCurrentClient }) => {
       return client.client_id === Number(event.target.id);
     })[0];
     setCurrentClient(chosenClient);
+  };
+
+  const handleRemoveClientClick = (event) => {
+    const client_id = Number(event.target.id);
+    const confirmDeletion = confirm(
+      `Are you sure you want to remove this client?`
+    );
+    if (!confirmDeletion) return;
+    axios({
+      method: 'DELETE',
+      url: `http://localhost:3000/client/${client_id}`,
+    })
+      .then((response) => {
+        console.log(response.data);
+        setClients((prev) => {
+          const newClientList = [];
+          for (let client of prev) {
+            if (client.client_id !== client_id) {
+              newClientList.push(client);
+            }
+          }
+          return newClientList;
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -41,9 +74,22 @@ const ClientList = ({ clients, controlModal, setCurrentClient }) => {
                 key={client.client_id}
                 className="client-list__client"
                 id={client.client_id}
-                onClick={handleClientClick}
               >
-                {client.name}
+                <p
+                  onClick={handleClientClick}
+                  id={client.client_id}
+                  className="client-list-p"
+                >
+                  {client.name}
+                </p>
+                <button
+                  className="remove-btn"
+                  type="button"
+                  id={client.client_id}
+                  onClick={handleRemoveClientClick}
+                >
+                  Remove
+                </button>
               </div>
             ))}
         </div>

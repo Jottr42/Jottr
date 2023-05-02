@@ -18,8 +18,11 @@ const MainPage = ({ user, setUser }) => {
   const [clients, setClients] = useState([]);
   const [currentClient, setCurrentClient] = useState({});
   const [currentClientSessions, setCurrentClientSessions] = useState([]);
+  const [currentSession, setCurrentSession] = useState({});
+  const [sessionCreated, setSessionCreated] = useState(false);
 
   console.log(currentClient, 'currentClient');
+  console.log(currentSession, 'currentSession');
 
   //getting all of a users clients
   useEffect(() => {
@@ -54,7 +57,7 @@ const MainPage = ({ user, setUser }) => {
       .catch((err) => {
         console.log(`Error in useEffect getting all client records`, err);
       });
-  }, [currentClient]);
+  }, [currentClient, sessionCreated, viewOneSession]);
 
   return (
     <div className="mainpage">
@@ -70,6 +73,7 @@ const MainPage = ({ user, setUser }) => {
           setCurrentClient={setCurrentClient}
           currentClient={currentClient}
           currentClientSessions={currentClientSessions}
+          setCurrentSession={setCurrentSession}
         />
 
         {/* need to pass user_id here */}
@@ -78,6 +82,10 @@ const MainPage = ({ user, setUser }) => {
           changeViewHandler={setViewOneSession}
           currentClient={currentClient}
           currentClientSessions={currentClientSessions}
+          setCurrentSession={setCurrentSession}
+          currentSession={currentSession}
+          setCurrentClientSessions={setCurrentClientSessions}
+          setSessionCreated={setSessionCreated}
         />
         {showModal && (
           <Modal
